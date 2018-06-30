@@ -1,4 +1,5 @@
 package test;
+import functions.Config;
 import functions.Functions;
 import pages.Registro;
 
@@ -9,6 +10,7 @@ import org.testng.Assert;
 import org.testng.annotations.*;
 
 public class tst_002 {
+	Config Config = new Config();
 	Functions Selenium = new Functions();
 	WebDriver driver = Selenium.GChrome();
 	Registro Registro = new Registro();	
@@ -17,10 +19,7 @@ public class tst_002 {
 	
 	@BeforeClass(alwaysRun = true)
 	public void setUp() throws Exception {
-		
-		Excel = Selenium.ExcelDataConfig();
-		driver.get(Registro.Url);
-		
+		driver.get(Config.UrlRegistroGmail);
 	}
 	
 	@Test

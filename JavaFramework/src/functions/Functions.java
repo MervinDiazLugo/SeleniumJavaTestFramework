@@ -4,11 +4,9 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.sql.Time;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.NoSuchElementException;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.FileUtils;
@@ -29,32 +27,33 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 public class Functions {
-	boolean retorno;
 	private static final WebElement False = null;
+	Config Config = new Config();
+	String ExcelPath = Config.ExcelPath;
 	XSSFWorkbook wb;
-	XSSFSheet sheet1;
+	XSSFSheet Hoja1;
 	File src;
 	String URLInicial;
 	String ruta;
-	String ExcelPath = "C:\\workspace\\JavaFramework\\src\\data\\inputData.xlsx";;
+	
 	
 	public String ScreenShot(WebDriver driver, String TestCaptura)
 		
 	  {
 	      Date fechaActual = new Date();
-	               
+	      String ScreenPath = Config.ScreenPath;         
 	        //Formateando la fecha:
-	        DateFormat formatoHora = new SimpleDateFormat("HHmmss");
-	        DateFormat formatoFecha = new SimpleDateFormat("dd-MM-yyyy");
-	        String hora = formatoHora.format(fechaActual);
-	        String fecha = formatoFecha.format(fechaActual);
+	       DateFormat formatoHora = new SimpleDateFormat("HHmmss");
+	       DateFormat formatoFecha = new SimpleDateFormat("dd-MM-yyyy");
+	       String hora = formatoHora.format(fechaActual);
+	       String fecha = formatoFecha.format(fechaActual);
 	        
 	   try {
 	    TakesScreenshot ts= (TakesScreenshot)driver;
 	    
 	    File source= ts.getScreenshotAs(OutputType.FILE);
 	    
-	    ruta= "C:\\workspace\\JavaFramework\\src\\data\\reportes\\screenshots\\"+fecha+"\\"+TestCaptura+"\\"+TestCaptura+"_("+hora+")"+".png";
+	    ruta= ScreenPath + fecha + "\\"+TestCaptura+"\\"+TestCaptura+"_("+hora+")"+".png";
 	    //C:\\workspace\\GmailTest\\Reportes\\ScreenShots
 	    
 	    File destino= new File (ruta);
@@ -72,41 +71,36 @@ public class Functions {
 	   
 	  }
 	
-	public Object ExcelDataConfig() throws FileNotFoundException{
+
+
+	public String LeerExcel(int fila, int columna) throws FileNotFoundException{
 		
-			try {
+		try {
+			
+			src= new File(ExcelPath);
 				
-				src= new File(ExcelPath);
+			FileInputStream fis = new FileInputStream(src);
 				
-				FileInputStream fis = new FileInputStream(src);
-				
-				wb = new XSSFWorkbook(fis);
-				
-				return wb;
-				
-			} catch (IOException e) {
+			wb = new XSSFWorkbook(fis);
+			
+			Hoja1 = wb.getSheetAt(0);
+			
+			String data = Hoja1.getRow(fila).getCell(columna).getStringCellValue();
+			
+			System.out.println("El valor de la Celda " + (fila) + "," + (columna) + " es "  + data);
+
+			return data;
+			
+		} catch (IOException e) {
 				System.out.println(e.getMessage());
-				return ExcelPath;
-			}
-			
-			
-			
 		}
-
-
-	public String GetData(int sheetNumber, int row, int colunm){
-		
-		sheet1 = wb.getSheetAt(sheetNumber);
-		
-		String data=sheet1.getRow(row).getCell(colunm).getStringCellValue();
-		
-		return data;
-		
+		return ExcelPath;
+				
 	}
 
-	public int GetRowCount(int sheetIndex)
+	public int GetRowCount()
 	{
-		int row = wb.getSheetAt(sheetIndex).getLastRowNum()+1;
+		int row = wb.getSheet("DataTest").getLastRowNum()+1;
 		
 		return row;
 	}
@@ -115,9 +109,9 @@ public class Functions {
 	public void WriteData(int sheetNumber, int row, int colunm, String Msj) throws IOException{
 		
 
-			sheet1 = wb.getSheetAt(sheetNumber);
-			sheet1.getRow(row).createCell(colunm).setCellValue(Msj);
-			FileOutputStream fout = new FileOutputStream(src);
+		Hoja1 = wb.getSheetAt(sheetNumber);
+		Hoja1.getRow(row).createCell(colunm).setCellValue(Msj);
+		FileOutputStream fout = new FileOutputStream(src);
 			wb.write(fout);
 
 		

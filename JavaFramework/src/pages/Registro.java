@@ -2,10 +2,6 @@ package pages;
 
 public class Registro {
 	
-	public String Url = "https://accounts.google.com/SignUp";
-	
-	public String Url2 = "http://www.migraciones.gov.ar/turnos/express_pantalla_1.php";
-	
 	public String lbl_Titulo_xpath = "//*[@id='headingText']";
 	//Crear tu cuenta de Google
 	
@@ -31,9 +27,6 @@ public class Registro {
 	
 	public String lbl_ErrorPassword_xpath = "//*[@id='passwd']/div[2]/div[2]";
 	
-	public String dpd_Provincia_xpath = "//*[@id='provincia']";
-	
-	public String dpd_Municipio_xpath = "//*[@id='municipio']";
 	
 	
 }
