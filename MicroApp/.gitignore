@@ -1,8 +1,0 @@
-*.pyc
-*.log
-*.html
-.metadata/
-.location/
-.settings/
-/.project
-/.pydevproject
