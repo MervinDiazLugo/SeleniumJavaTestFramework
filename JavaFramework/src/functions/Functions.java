@@ -106,14 +106,27 @@ public class Functions {
 	}
 
 
-	public void WriteData(int sheetNumber, int row, int colunm, String Msj) throws IOException{
-		
+	public void EscribirExcel(int row, int colunm, String Msj) throws IOException{
 
-		Hoja1 = wb.getSheetAt(sheetNumber);
-		Hoja1.getRow(row).createCell(colunm).setCellValue(Msj);
-		FileOutputStream fout = new FileOutputStream(src);
+
+		try {
+			src= new File(ExcelPath);
+			
+			FileInputStream fis = new FileInputStream(src);
+				
+			wb = new XSSFWorkbook(fis);
+			
+			Hoja1 = wb.getSheetAt(0);
+
+			Hoja1.getRow(row).createCell(colunm).setCellValue(Msj);
+			
+			FileOutputStream fout = new FileOutputStream(src);
+			
 			wb.write(fout);
-
+			
+		} catch (IOException e) {
+			System.out.println(e.getMessage());
+		}
 		
 	}
 

@@ -1,0 +1,29 @@
+package data;
+
+import java.io.FileNotFoundException;
+
+import org.testng.annotations.DataProvider;
+
+import functions.Functions;
+
+public class DataTest {
+	Functions Selenium = new Functions();
+	
+	@DataProvider
+	public String test_001_Data(){
+		
+		try {
+			String Nombre = Selenium.LeerExcel(3, 1);
+			String Apellido	= Selenium.LeerExcel(3, 2);
+			String NombreDeUsuario = Selenium.LeerExcel(3, 3);
+			String [] Data = {Nombre, Apellido, NombreDeUsuario}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		return Data;
+		
+		
+	}
+
+}

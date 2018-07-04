@@ -13,11 +13,9 @@ public class tst_003{
 	WebDriver driver = Selenium.GChrome();
 	Migraciones Migraciones = new Migraciones();	
 	String TestCaptura = this.getClass().getName();
-	Object Excel;
 	
 	@BeforeClass(alwaysRun = true)
 	public void setUp() throws Exception {
-		
 		driver.get(Config.UrlMigraciones);
 		
 	}
@@ -33,7 +31,6 @@ public class tst_003{
 		Thread.sleep(5000);//No Usar Thread.sleep, de describira una funcion mas adelante
 		
 		Selenium.Select_Elements_Xpath(driver, Migraciones.dpd_Municipio_xpath).selectByIndex(5);
-		
 		
 		Selenium.ScreenShot(driver, TestCaptura);
 	}

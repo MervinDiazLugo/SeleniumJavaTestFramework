@@ -1,0 +1,23 @@
+package data;
+
+import java.io.FileNotFoundException;
+
+import functions.Functions;
+
+public class DataTest {
+	Functions Selenium = new Functions();
+	
+	public void test_001_Data(){
+		
+		try {
+			String Nombre = Selenium.LeerExcel(3, 1);
+			String Apellido	= Selenium.LeerExcel(3, 2);
+			String NombreDeUsuario = Selenium.LeerExcel(3, 3);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		
+	}
+
+}

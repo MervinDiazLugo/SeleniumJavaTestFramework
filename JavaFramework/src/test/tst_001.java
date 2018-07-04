@@ -1,16 +1,18 @@
 package test;
 import functions.Config;
 import functions.Functions;
+import data.DataTest;
 import pages.Registro;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.testng.Assert;
 import org.testng.annotations.*;
 
 public class tst_001 {
 	Config Config = new Config();
 	Functions Selenium = new Functions();
+	DataTest DataTest = new DataTest();
 	WebDriver driver = Selenium.GChrome();
 	Registro Registro = new Registro();	
 	String TestCaptura = this.getClass().getName();
@@ -18,21 +20,21 @@ public class tst_001 {
 	@BeforeClass(alwaysRun = true)
 	public void setUp() throws Exception {
 		
-		driver.get(Config.UrlRegistroGmail);
-		
+		driver.get(Config.UrlRegistroGmail);	
 		
 	}
 	
 	@Test
-	 public void Test_001() throws InterruptedException, FileNotFoundException{
+	 public void Test_001() throws InterruptedException, IOException{
 		
-		String Nombre = Selenium.LeerExcel(3, 1);
-		String Apellido	= Selenium.LeerExcel(3, 2);
-		String NombreDeUsuario = Selenium.LeerExcel(3, 3);
+		String[] Datos = DataTest.test_001_Data();
+		System.out.println(Datos);
 		
-		Selenium.Xpath_Elements(driver, Registro.txt_Nombre_xpath).sendKeys(Nombre);
-		Selenium.Xpath_Elements(driver, Registro.txt_Apellido_xpath).sendKeys(Apellido);
-		Selenium.Xpath_Elements(driver, Registro.txt_Usuario_xpath).sendKeys(NombreDeUsuario);
+		Selenium.Xpath_Elements(driver, Registro.txt_Nombre_xpath).sendKeys(Datos[0]);
+		Selenium.Xpath_Elements(driver, Registro.txt_Apellido_xpath).sendKeys(Datos[1]);
+		Selenium.Xpath_Elements(driver, Registro.txt_Usuario_xpath).sendKeys(Datos[2]);
+		
+		Selenium.EscribirExcel(3, 0, "Finalizo OK");
 		
 		Selenium.ScreenShot(driver, TestCaptura);
 		
