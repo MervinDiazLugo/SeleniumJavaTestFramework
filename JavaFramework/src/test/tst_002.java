@@ -12,13 +12,14 @@ import org.testng.annotations.*;
 public class tst_002 {
 	Config Config = new Config();
 	Functions Selenium = new Functions();
-	WebDriver driver = Selenium.GChrome();
+	WebDriver driver;
 	Registro Registro = new Registro();	
 	String TestCaptura = this.getClass().getName();
 	Object Excel;
 	
 	@BeforeClass(alwaysRun = true)
 	public void setUp() throws Exception {
+		driver = Selenium.AbrirNavegador();
 		driver.get(Config.UrlRegistroGmail);
 	}
 	
@@ -30,13 +31,13 @@ public class tst_002 {
 		
 		
 		// RETORNO CUANDO UN WEB ELEMENT NO EXISTE / EXISTE
-		WebElement Z = Selenium.Esperar_Element(driver, Registro.txt_Nombre_xpath);
+		WebElement Z = Selenium.Esperar_Xpath(driver, Registro.txt_Nombre_xpath);
 		System.out.println(Z);
 		
 		//Assertion CUANDO UN ELEMENTO EXISTE
 		Assert.assertNotNull(Z);
 		
-		WebElement X = Selenium.Esperar_Element(driver, Registro.txt_ApellidoMAL_xpath);
+		WebElement X = Selenium.Esperar_Xpath(driver, Registro.txt_ApellidoMAL_xpath);
 		System.out.println(X);
 		
 		//Assertion CUANDO UN ELEMENTO NO EXISTE

@@ -2,24 +2,24 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="8676" started-at="2018-07-04T00:57:43Z" finished-at="2018-07-04T00:57:52Z">
+  <suite name="Default suite" duration-ms="30169" started-at="2018-07-05T01:10:55Z" finished-at="2018-07-05T01:11:25Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="8676" started-at="2018-07-04T00:57:43Z" finished-at="2018-07-04T00:57:52Z">
-      <class name="test.tst_001">
-        <test-method status="PASS" signature="setUp()[pri:0, instance:test.tst_001@3e0e1046]" name="setUp" is-config="true" duration-ms="3244" started-at="2018-07-03T21:57:43Z" finished-at="2018-07-03T21:57:46Z">
+    <test name="Default test" duration-ms="30169" started-at="2018-07-05T01:10:55Z" finished-at="2018-07-05T01:11:25Z">
+      <class name="test.tst_004">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:test.tst_004@ae45eb6]" name="setUp" is-config="true" duration-ms="17129" started-at="2018-07-04T22:10:55Z" finished-at="2018-07-04T22:11:12Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="Test_001()[pri:0, instance:test.tst_001@3e0e1046]" name="Test_001" duration-ms="4640" started-at="2018-07-03T21:57:46Z" finished-at="2018-07-03T21:57:51Z">
+        <test-method status="PASS" signature="Test_004()[pri:0, instance:test.tst_004@ae45eb6]" name="Test_004" duration-ms="12554" started-at="2018-07-04T22:11:12Z" finished-at="2018-07-04T22:11:24Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- Test_001 -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:test.tst_001@3e0e1046]" name="tearDown" is-config="true" duration-ms="732" started-at="2018-07-03T21:57:51Z" finished-at="2018-07-03T21:57:52Z">
+        </test-method> <!-- Test_004 -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:test.tst_004@ae45eb6]" name="tearDown" is-config="true" duration-ms="414" started-at="2018-07-04T22:11:24Z" finished-at="2018-07-04T22:11:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- test.tst_001 -->
+      </class> <!-- test.tst_004 -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

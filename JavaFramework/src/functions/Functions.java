@@ -13,12 +13,14 @@ import org.apache.commons.io.FileUtils;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.TimeoutException;
@@ -35,39 +37,42 @@ public class Functions {
 	File src;
 	String URLInicial;
 	String ruta;
+	String NAVEGADOR;
 	
 	
-	public String ScreenShot(WebDriver driver, String TestCaptura)
-		
-	  {
-	      Date fechaActual = new Date();
-	      String ScreenPath = Config.ScreenPath;         
-	        //Formateando la fecha:
-	       DateFormat formatoHora = new SimpleDateFormat("HHmmss");
-	       DateFormat formatoFecha = new SimpleDateFormat("dd-MM-yyyy");
-	       String hora = formatoHora.format(fechaActual);
-	       String fecha = formatoFecha.format(fechaActual);
+	public String ScreenShot(WebDriver driver, String TestCaptura){
+		Date fechaActual = new Date();
+	    String ScreenPath = Config.ScreenPath;         
+
+	    //Formateando la fecha:
+	    DateFormat formatoHora = new SimpleDateFormat("HHmmss");
+	    DateFormat formatoFecha = new SimpleDateFormat("dd-MM-yyyy");
+	    String hora = formatoHora.format(fechaActual);
+	    String fecha = formatoFecha.format(fechaActual);
 	        
 	   try {
-	    TakesScreenshot ts= (TakesScreenshot)driver;
+		   NAVEGADOR = Config.NAVEGADOR; 
+		   
+		   TakesScreenshot ts= (TakesScreenshot)driver;
 	    
-	    File source= ts.getScreenshotAs(OutputType.FILE);
+		   File source= ts.getScreenshotAs(OutputType.FILE);
 	    
-	    ruta= ScreenPath + fecha + "\\"+TestCaptura+"\\"+TestCaptura+"_("+hora+")"+".png";
-	    //C:\\workspace\\GmailTest\\Reportes\\ScreenShots
+		   ruta= ScreenPath + fecha + "\\"+TestCaptura+"\\"+NAVEGADOR+"\\"+TestCaptura+"_("+hora+")"+".png";
 	    
-	    File destino= new File (ruta);
+		   File destino= new File (ruta);
 	    
-	    FileUtils.copyFile(source, destino);
+		   FileUtils.copyFile(source, destino);
 	    
-	    System.out.println("Se tomo la Captura de pantalla en: " + ruta);
+		   System.out.println("Se tomo la Captura de pantalla en: " + ruta);
 	    
-	    return ruta;
+		   return ruta;
 	    
 	   } catch (Exception e) {
-	    System.out.println("Error Mientras se Tomaba la Captura de Pantalla "+e.getMessage());
+		   
+		   System.out.println("Error Mientras se Tomaba la Captura de Pantalla "+e.getMessage());
+	   
 	   }
-	   return TestCaptura;
+	   	   return TestCaptura;
 	   
 	  }
 	
@@ -134,30 +139,48 @@ public class Functions {
 		wb.close();
 	}
 	
-//DRIVERS
-	public WebDriver GChrome() {
+//#########################################################
+//##################### DRIVERS ###########################	
+//#########################################################		
+	public WebDriver AbrirNavegador(){
+		NAVEGADOR = Config.NAVEGADOR; 
 		WebDriver driver;
-		System.setProperty("webdriver.chrome.driver", "C:\\workspace\\JavaFramework\\src\\librerias\\drivers\\chromedriver.exe");
-		driver = new ChromeDriver();
-		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		
-		return driver;
+		if (NAVEGADOR == "CHROME") {
 
+			System.setProperty("webdriver.chrome.driver", Config.Chrome);
+			driver = new ChromeDriver();
+			driver.manage().window().maximize();
+			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+			return driver;
+		}	
+		
+		if (NAVEGADOR == "IEXPLORER") {
+			System.setProperty("webdriver.ie.driver", Config.IExplorer);
+			DesiredCapabilities cap = new DesiredCapabilities();
+			cap.setCapability(InternetExplorerDriver.IE_ENSURE_CLEAN_SESSION, true);
+
+			driver = new InternetExplorerDriver();
+			driver.manage().window().maximize();
+			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+			return driver;
+		} 
+		
+		if (NAVEGADOR == "FIREFOX") {
+
+			System.setProperty("webdriver.chrome.driver", Config.Firefox);
+			driver = new FirefoxDriver();
+			driver.manage().window().maximize();
+			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+			return driver;
+		}	
+			
+		 else {
+			 System.out.println("AbrirNavegador: Actualiza tus drivers");
+			 return null;
+		}
 	}
 	
-	public void IExplorer(String URLInicial) {
-		WebDriver driver;
-		System.setProperty("webdriver.ie.driver", "..\\librerias\\drivers\\IEDriverServer.exe");
-		DesiredCapabilities cap = new DesiredCapabilities();
-		cap.setCapability(InternetExplorerDriver.IE_ENSURE_CLEAN_SESSION, true);
 
-		driver = new InternetExplorerDriver();
-		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		driver.get(URLInicial);
-
-	}
 	
 //#########################################################
 //######################SELENIUM###########################	
@@ -165,118 +188,208 @@ public class Functions {
 	
 	public WebElement Xpath_Elements(WebDriver driver, String XPATH){
 		try {
+			
 			WebDriverWait wait = new WebDriverWait(driver, 10);
 			WebElement elemento = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(XPATH)));
 			System.out.println("Xpath_Elements: " + XPATH);
 			return elemento;
+			
 		} catch (WebDriverException e) {
+			
 			System.out.println(e);
 			System.out.println("Xpath_Elements, No se encontró el elemento: " + XPATH);
 			return False;
+			
 		}
 	}
 	
 	public WebElement ID_Elements(WebDriver driver, String ID){
 		try {
+			
 			WebDriverWait wait = new WebDriverWait(driver, 10);
 			WebElement elemento = wait.until(ExpectedConditions.presenceOfElementLocated(By.id(ID)));
 			System.out.println("ID_Elements: " + ID);
 			return elemento;
+			
 		} catch (WebDriverException e) {
+			
 			System.out.println(e);
 			System.out.println("ID_Elements, No se encontró el elemento: " + ID);
 			return False;
+			
 		}
 	}
 	
 	public WebElement CCS_Elements(WebDriver driver, String CCS){
 		try {
+			
 			WebDriverWait wait = new WebDriverWait(driver, 10);
 			WebElement elemento = wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(CCS)));
 			System.out.println("CCS_Elements: " + CCS);
 			return elemento;
+			
 		} catch (WebDriverException e) {
+			
 			System.out.println(e);
 			System.out.println("CCS_Elements, No se encontró el elemento: " + CCS);
 			return False;
+			
 		}
 	}
-	
+
+//#########################################################	
 	public WebElement Link_Elements(WebDriver driver, String LINK){
 		try {
+			
 			WebDriverWait wait = new WebDriverWait(driver, 10);
 			WebElement elemento = wait.until(ExpectedConditions.presenceOfElementLocated(By.partialLinkText(LINK)));
 			System.out.println("Link_Elements: " + LINK);
 			return elemento;
+			
 		} catch (WebDriverException e) {
+			
 			System.out.println(e);
 			System.out.println("Link_Elements, No se encontró el elemento: " + LINK);
 			return False;
+			
 		}
 	}
 	
 	public Select Select_Elements_Xpath(WebDriver driver, String XPATH) throws InterruptedException{
 		try {
+			
 			Select select = new Select(driver.findElement(By.xpath(XPATH)));
 			System.out.println("Select_Elements_Xpath: " + XPATH);
 			Thread.sleep(5);
 			return select;
+			
 		} catch(TimeoutException e) {
+			
 			System.out.println(e);
 			System.out.println("Select_Elements_Xpath, No se encontró el elemento: " + XPATH);
 			return (Select) False;
+			
 		}
 	}
 	
 	public Select Select_Elements_ID(WebDriver driver, String ID) throws InterruptedException{
 		try {
+			
 			Select select = new Select(driver.findElement(By.id(ID)));
 			System.out.println("Select_Elements_ID: " + ID);
 			Thread.sleep(4);
 			return select;
+			
 		} catch (TimeoutException e) {
+			
 			System.out.println(e);
 			System.out.println("Select_Elements_ID, No se encontró el elemento: " + ID);
 			return (Select) False;
+			
 		}
 	}
 	
 	public Select Select_Elements_CSS(WebDriver driver, String CSS) throws InterruptedException{
 		try {
+			
 			Select select = new Select(driver.findElement(By.cssSelector(CSS)));
 			System.out.println("Select_Elements_CSS: " + CSS);
 			Thread.sleep(4);
 			return select;
+			
 		} catch (TimeoutException e) {
+			
 			System.out.println(e);
 			System.out.println("Select_Elements_CSS, No se encontró el elemento: " + CSS);
 			return (Select) False;
+			
 		}
 	}
 	
 	public Select Select_Elements_LINK(WebDriver driver, String LINK) throws InterruptedException{
 		try {
+			
 			Select select = new Select(driver.findElement(By.partialLinkText(LINK)));
 			System.out.println("Select_Elements_LINK: " + LINK);
 			Thread.sleep(4);
 			return select;
+			
 		} catch (TimeoutException e) {
+			
 			System.out.println(e);
 			System.out.println("Select_Elements_LINK, No se encontró el elemento: " + LINK);
 			return (Select) False;
+			
 		}
 	}
-	
-	public WebElement Esperar_Element(WebDriver driver, String XPATH){
+
+//#########################################################	
+	public WebElement Esperar_Xpath(WebDriver driver, String XPATH){
 		try {
+			
 			WebDriverWait wait = new WebDriverWait(driver, 10);
 			WebElement elemento = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(XPATH)));
 			System.out.println("Esperar_Element: " + XPATH);
 			return elemento;
+			
 		} catch (TimeoutException e) {
+			
 			System.out.println(e);
 			System.out.println("Esperar_Element, No se encontró el elemento: " + XPATH);
 			return False;
+			
+		}
+	}
+	
+	public WebElement Esperar_CSS(WebDriver driver, String CSS){
+		try {
+			
+			WebDriverWait wait = new WebDriverWait(driver, 10);
+			WebElement elemento = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(CSS)));
+			System.out.println("Esperar_Element: " + CSS);
+			return elemento;
+			
+		} catch (TimeoutException e) {
+			
+			System.out.println(e);
+			System.out.println("Esperar_Element, No se encontró el elemento: " + CSS);
+			return False;
+			
+		}
+	}
+	 
+//#########################################################	
+	public void JS_Click_Xpath(WebDriver driver, String XPATH){
+		try {
+			
+			WebDriverWait wait = new WebDriverWait(driver, 10);
+			WebElement elemento = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(XPATH)));
+			JavascriptExecutor js = (JavascriptExecutor)driver;
+			js.executeScript("arguments[0].click();", elemento);
+			System.out.println("JS_Click_Xpath: " + XPATH);
+			
+		} catch (WebDriverException e) {
+			
+			System.out.println(e);
+			System.out.println("JS_Click_Xpath, No se encontró el elemento: " + XPATH);
+			
+		}
+	}
+	
+	public void JS_Click_CSS(WebDriver driver, String CSS){
+		try {
+			
+			WebDriverWait wait = new WebDriverWait(driver, 10);
+			WebElement elemento = wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(CSS)));
+			JavascriptExecutor js = (JavascriptExecutor)driver;
+			js.executeScript("arguments[0].click();", elemento);
+			System.out.println("JS_Click_Xpath: " + CSS);
+			
+		} catch (WebDriverException e) {
+			
+			System.out.println(e);
+			System.out.println("JS_Click_CSS, No se encontró el elemento: " + CSS);
+			
 		}
 	}
 }
