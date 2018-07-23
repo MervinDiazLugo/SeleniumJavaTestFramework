@@ -1,0 +1,8 @@
+package test;
+
+import java.lang.annotation.Documented;
+
+@Documented
+public @interface Description {
+
+}

@@ -39,7 +39,9 @@ public class Functions {
 	String ruta;
 	String NAVEGADOR;
 	
-	
+	//#########################################################
+	//################## SCREENSHOTS ##########################	
+	//#########################################################	
 	public String ScreenShot(WebDriver driver, String TestCaptura){
 		Date fechaActual = new Date();
 	    String ScreenPath = Config.ScreenPath;         
@@ -76,7 +78,9 @@ public class Functions {
 	   
 	  }
 	
-
+	//#########################################################
+	//##################### EXCEL ###########################	
+	//#########################################################
 
 	public String LeerExcel(int fila, int columna) throws FileNotFoundException{
 		
@@ -183,7 +187,7 @@ public class Functions {
 
 	
 //#########################################################
-//######################SELENIUM###########################	
+//##################### SELENIUM ##########################	
 //#########################################################	
 	
 	public WebElement Xpath_Elements(WebDriver driver, String XPATH){
@@ -392,5 +396,59 @@ public class Functions {
 			
 		}
 	}
+	
+//#########################################################	
+	public void ir_a_Xpath(WebDriver driver, String XPATH){
+		try {
+			
+			WebDriverWait wait = new WebDriverWait(driver, 10);
+			WebElement elemento = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(XPATH)));
+			JavascriptExecutor js = (JavascriptExecutor)driver;
+			js.executeScript("arguments[0].scrollIntoView();", elemento);
+			System.out.println("Se desplazó al elemento: " + XPATH);
+			
+		} catch (WebDriverException e) {
+			
+			System.out.println(e);
+			System.out.println("ir_a, No se encontró el elemento: " + XPATH);
+			
+		}
+	}
+	
+	public void ir_a_CSS(WebDriver driver, String CSS){
+		try {
+			
+			WebDriverWait wait = new WebDriverWait(driver, 10);
+			WebElement elemento = wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(CSS)));
+			JavascriptExecutor js = (JavascriptExecutor)driver;
+			js.executeScript("arguments[0].scrollIntoView();", elemento);
+			System.out.println("Se desplazó al elemento: " + CSS);
+			
+		} catch (WebDriverException e) {
+			
+			System.out.println(e);
+			System.out.println("ir_a, No se encontró el elemento: " + CSS);
+			
+		}
+	}
+	//#########################################################	
+	public void Esperar_Finalizar_Carga (int timeWait) throws InterruptedException {
+		if (timeWait == 0) {
+			timeWait = 8;
+		}
+		try {
+			int TotalWait = 0;
+			while (TotalWait < timeWait) {
+				Thread.sleep(1000);
+				TotalWait = TotalWait + 1;
+				System.out.println("Cargando ... intento: " + (TotalWait));
+			}
+	
+		} finally {
+			System.out.println("Carga finalizada");
+		}
+		
+	}
+	
 }
 	

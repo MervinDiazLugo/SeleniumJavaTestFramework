@@ -27,6 +27,8 @@ public class Registro {
 	
 	public String lbl_ErrorPassword_xpath = "//*[@id='passwd']/div[2]/div[2]";
 	
+	public String btn_app_xpath ="/html/body/footer/div[2]/div[2]/a";
+	
 	
 	
 }

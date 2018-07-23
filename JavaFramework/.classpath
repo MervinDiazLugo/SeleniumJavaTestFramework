@@ -33,5 +33,7 @@
 	<classpathentry kind="lib" path="C:/workspace/JavaFramework/src/librerias/commons-io-2.6/commons-io-2.6-tests.jar"/>
 	<classpathentry kind="lib" path="C:/workspace/JavaFramework/src/librerias/commons-io-2.6/commons-io-2.6-test-sources.jar"/>
 	<classpathentry kind="con" path="org.testng.TESTNG_CONTAINER"/>
+	<classpathentry kind="lib" path="C:/workspace/JavaFramework/src/librerias/testng-6.14.3.jar"/>
+	<classpathentry kind="lib" path="C:/workspace/JavaFramework/src/librerias/jcommander-1.72.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -31,15 +31,15 @@ public class tst_004{
 		
 		Selenium.Esperar_Xpath(driver, Migraciones.dpd_MunicipioOpcion_xpath);
 		
-		Thread.sleep(3000);
+		Selenium.Esperar_Finalizar_Carga(3);
 		
 		Selenium.JS_Click_Xpath(driver, Migraciones.dpd_MunicipioOpcion_xpath);
 		
-		Thread.sleep(3000);
+		Selenium.Esperar_Finalizar_Carga(3);
 		
 		Selenium.JS_Click_Xpath(driver, Migraciones.btn_Siguiente_xpath);
 		
-		Thread.sleep(3000);
+		Selenium.Esperar_Finalizar_Carga(3);
 		
 		Selenium.ScreenShot(driver, TestCaptura);
 	}

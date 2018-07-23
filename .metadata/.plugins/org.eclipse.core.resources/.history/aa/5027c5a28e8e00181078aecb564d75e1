@@ -1,0 +1,37 @@
+package test;
+import functions.Functions;
+import pages.Migraciones;
+import functions.Config;
+
+
+import org.openqa.selenium.WebDriver;
+import org.testng.annotations.*;
+
+public class tst_005{
+	Config Config = new Config();
+	Functions Selenium = new Functions();
+	WebDriver driver;
+	Migraciones Migraciones = new Migraciones();	
+	String TestCaptura = this.getClass().getName();
+	
+	@BeforeClass(alwaysRun = true)
+	public void setUp() throws Exception {
+		driver = Selenium.AbrirNavegador();
+		driver.get(Config.UrlMercadoLibre);
+		
+	}
+	
+	@Test
+	 public void Test_005(driver) throws InterruptedException{
+		Selenium.ScreenShot(driver, TestCaptura);
+		
+		Selenium.ir_a_Xpath(driver, XPATH);
+
+	}
+	
+	@AfterClass(alwaysRun = true)
+	public void tearDown() {
+		driver.quit();
+	}
+
+}
