@@ -1,6 +1,2 @@
-cd C:\workspace\JavaFramework
-mvn dependency:list
-mvn dependency:copy-dependencies
-mvn compile
-
-pause
+cd C:\workspace\JavaFramework\src\test
+C:\workspace\JavaFramework\src\librerias\apache-maven-3.5.4\bin\mvn.cmd -X -e clean & C:\workspace\JavaFramework\src\librerias\apache-maven-3.5.4\bin\mvn.cmd -X -e dependency:list & C:\workspace\JavaFramework\src\librerias\apache-maven-3.5.4\bin\mvn.cmd -X -e dependency:copy-dependencies & C:\workspace\JavaFramework\src\librerias\apache-maven-3.5.4\bin\mvn.cmd -X -e compile & C:\workspace\JavaFramework\src\librerias\apache-maven-3.5.4\bin\mvn.cmd -X -e clean test & pause

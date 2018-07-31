@@ -1,20 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
-	<classpathentry kind="lib" path="C:/workspace/JavaFramework/src/librerias/poi-bin-3.17-20170915/poi-3.17.jar"/>
-	<classpathentry kind="lib" path="C:/workspace/JavaFramework/src/librerias/poi-bin-3.17-20170915/poi-examples-3.17.jar"/>
-	<classpathentry kind="lib" path="C:/workspace/JavaFramework/src/librerias/poi-bin-3.17-20170915/poi-excelant-3.17.jar"/>
-	<classpathentry kind="lib" path="C:/workspace/JavaFramework/src/librerias/poi-bin-3.17-20170915/poi-ooxml-3.17.jar"/>
-	<classpathentry kind="lib" path="C:/workspace/JavaFramework/src/librerias/poi-bin-3.17-20170915/poi-ooxml-schemas-3.17.jar"/>
-	<classpathentry kind="lib" path="C:/workspace/JavaFramework/src/librerias/poi-bin-3.17-20170915/poi-scratchpad-3.17.jar"/>
-	<classpathentry kind="lib" path="C:/workspace/JavaFramework/src/librerias/poi-bin-3.17-20170915/lib/commons-codec-1.10.jar"/>
-	<classpathentry kind="lib" path="C:/workspace/JavaFramework/src/librerias/poi-bin-3.17-20170915/lib/commons-collections4-4.1.jar"/>
-	<classpathentry kind="lib" path="C:/workspace/JavaFramework/src/librerias/poi-bin-3.17-20170915/lib/commons-logging-1.2.jar"/>
-	<classpathentry kind="lib" path="C:/workspace/JavaFramework/src/librerias/poi-bin-3.17-20170915/lib/junit-4.12.jar"/>
-	<classpathentry kind="lib" path="C:/workspace/JavaFramework/src/librerias/poi-bin-3.17-20170915/lib/log4j-1.2.17.jar"/>
-	<classpathentry kind="lib" path="C:/workspace/JavaFramework/src/librerias/poi-bin-3.17-20170915/ooxml-lib/curvesapi-1.04.jar"/>
-	<classpathentry kind="lib" path="C:/workspace/JavaFramework/src/librerias/poi-bin-3.17-20170915/ooxml-lib/xmlbeans-2.6.0.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="lib" path="C:/workspace/JavaFramework/src/librerias/selenium-java-3.12.0/client-combined-3.12.0.jar"/>
 	<classpathentry kind="lib" path="C:/workspace/JavaFramework/src/librerias/selenium-java-3.12.0/client-combined-3.12.0-sources.jar"/>
 	<classpathentry kind="lib" path="C:/workspace/JavaFramework/src/librerias/selenium-java-3.12.0/libs/byte-buddy-1.8.3.jar"/>
@@ -35,5 +26,24 @@
 	<classpathentry kind="con" path="org.testng.TESTNG_CONTAINER"/>
 	<classpathentry kind="lib" path="C:/workspace/JavaFramework/src/librerias/testng-6.14.3.jar"/>
 	<classpathentry kind="lib" path="C:/workspace/JavaFramework/src/librerias/jcommander-1.72.jar"/>
-	<classpathentry kind="output" path="bin"/>
+	<classpathentry kind="lib" path="C:/workspace/JavaFramework/src/librerias/allure-junit4-2.7.0.jar"/>
+	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/workspace/JavaFramework/src/librerias/poi-bin-3.15-20160924/poi-3.15.jar"/>
+	<classpathentry kind="lib" path="C:/workspace/JavaFramework/src/librerias/poi-bin-3.15-20160924/poi-examples-3.15.jar"/>
+	<classpathentry kind="lib" path="C:/workspace/JavaFramework/src/librerias/poi-bin-3.15-20160924/poi-excelant-3.15.jar"/>
+	<classpathentry kind="lib" path="C:/workspace/JavaFramework/src/librerias/poi-bin-3.15-20160924/poi-ooxml-3.15.jar"/>
+	<classpathentry kind="lib" path="C:/workspace/JavaFramework/src/librerias/poi-bin-3.15-20160924/poi-ooxml-schemas-3.15.jar"/>
+	<classpathentry kind="lib" path="C:/workspace/JavaFramework/src/librerias/poi-bin-3.15-20160924/poi-scratchpad-3.15.jar"/>
+	<classpathentry kind="lib" path="C:/workspace/JavaFramework/src/librerias/poi-bin-3.15-20160924/ooxml-lib/curvesapi-1.04.jar"/>
+	<classpathentry kind="lib" path="C:/workspace/JavaFramework/src/librerias/poi-bin-3.15-20160924/ooxml-lib/xmlbeans-2.6.0.jar"/>
+	<classpathentry kind="lib" path="C:/workspace/JavaFramework/src/librerias/poi-bin-3.15-20160924/lib/commons-codec-1.10.jar"/>
+	<classpathentry kind="lib" path="C:/workspace/JavaFramework/src/librerias/poi-bin-3.15-20160924/lib/commons-collections4-4.1.jar"/>
+	<classpathentry kind="lib" path="C:/workspace/JavaFramework/src/librerias/poi-bin-3.15-20160924/lib/commons-logging-1.2.jar"/>
+	<classpathentry kind="lib" path="C:/workspace/JavaFramework/src/librerias/poi-bin-3.15-20160924/lib/junit-4.12.jar"/>
+	<classpathentry kind="lib" path="C:/workspace/JavaFramework/src/librerias/poi-bin-3.15-20160924/lib/log4j-1.2.17.jar"/>
+	<classpathentry kind="output" path="target/classes"/>
 </classpath>
