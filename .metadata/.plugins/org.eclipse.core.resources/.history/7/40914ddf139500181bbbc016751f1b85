@@ -1,0 +1,23 @@
+package test.java.functions;
+ 
+public class Config {
+	
+	public String NAVEGADOR = "CHROME";
+	
+	public String UrlMigraciones = "http://www.migraciones.gov.ar/turnos/express_pantalla_1.php";
+	
+	public String UrlRegistroGmail = "https://accounts.google.com/SignUp";
+	
+	public String UrlMercadoLibre = "https://www.mercadolibre.com.ar/";
+	
+	public String ScreenPath = "./src/data/reportes/screenshots/";
+	//"C:\\workspace\\JavaFramework\\src\\data\\reportes\\screenshots\\";
+	
+	public String ExcelPath = "./src/data/inputData.xlsx";
+	
+	public String Chrome = "./src/librerias/drivers/chromedriver.exe";
+	
+	public String IExplorer = "./src/librerias/drivers/IEDriverServer.exe";
+	
+	public String Firefox = "./src/librerias/drivers/geckodriver.exe";
+}

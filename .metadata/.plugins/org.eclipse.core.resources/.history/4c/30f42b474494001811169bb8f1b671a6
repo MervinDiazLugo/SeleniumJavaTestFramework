@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+  <test name="Test">
+
+	<packages> <package name="src.test" /> </packages>  
+  
+  </test> <!-- Test -->
+</suite> <!-- Suite -->
+      <!--
+	<packages> <package name="src.test" /> </packages>     
+     
+    <classes>
+
+      <class name="test.tst_005"/>
+      <class name="test.tst_004"/>
+
+    </classes>
+    --> 

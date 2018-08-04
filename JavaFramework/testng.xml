@@ -4,8 +4,8 @@
   <test name="Test">
     <classes>
 
-      <class name="tst_005.tst_005"/>
-      <class name="tst_004.tst_004"/>
+      <class name="test.tst_005"/>
+      <class name="test.tst_004"/>
 
     </classes>
   </test> <!-- Test -->
@@ -15,8 +15,8 @@
      
     <classes>
 
-      <class name="test.tst_005"/>
-      <class name="test.tst_004"/>
+      <class name="test.java.tst_005.tst_005"/>
+      <class name="test.java.tst_004.tst_004"/>
 
     </classes>
     --> 

@@ -1,0 +1,8 @@
+cd C:\workspace\JavaFramework\src\test\java
+
+set classpath="%project_test_path%"
+
+
+java org.testng.TestNG C:\workspace\JavaFramework\src\test\java\tst_001.java
+
+pause

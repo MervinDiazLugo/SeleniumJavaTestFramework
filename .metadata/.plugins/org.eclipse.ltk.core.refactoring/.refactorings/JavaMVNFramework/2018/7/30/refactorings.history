@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move package &apos;data.reportes.screenshots&apos; to &apos;JavaMVNFramework/src/test/resources&apos;&#x0D;&#x0A;- Original project: &apos;JavaMVNFramework&apos;&#x0D;&#x0A;- Destination element: &apos;JavaMVNFramework/src/test/resources&apos;&#x0D;&#x0A;- Original element: &apos;JavaMVNFramework/src/test/java/data.reportes.screenshots&apos;&#x0D;&#x0A;- Update references to refactored element" description="Move package" destination="/src\/test\/resources" element1="/src\/test\/java&lt;data.reportes.screenshots" flags="589830" fragments="1" id="org.eclipse.jdt.ui.move" policy="org.eclipse.jdt.ui.movePackages" stamp="1532824189021" version="1.0"/>
+</session>

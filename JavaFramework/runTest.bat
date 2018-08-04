@@ -1,8 +1,8 @@
-cd C:\workspace\JavaFramework
+cd C:\workspace\JavaFramework\src\test
 
-set classpath="C:\*;C:\workspace\;C:\workspace\JavaFramework\;C:\workspace\JavaFramework\bin;C:\workspace\JavaFramework\bin\data;C:\workspace\JavaFramework\bin\data\reportes;C:\workspace\JavaFramework\bin\data\reportes\screenshots;C:\workspace\JavaFramework\bin\functions;C:\workspace\JavaFramework\bin\librerias;C:\workspace\JavaFramework\bin\librerias\allure-2.7.0;C:\workspace\JavaFramework\bin\librerias\allure-2.7.0\lib;C:\workspace\JavaFramework\bin\librerias\apache-maven-3.5.4;C:\workspace\JavaFramework\bin\librerias\apache-maven-3.5.4\lib;C:\workspace\JavaFramework\bin\librerias\commons-io-2.6;C:\workspace\JavaFramework\bin\librerias\drivers;C:\workspace\JavaFramework\bin\librerias\poi-bin-3.17-20170915;C:\workspace\JavaFramework\bin\librerias\poi-bin-3.17-20170915\lib;C:\workspace\JavaFramework\bin\pages;C:\workspace\JavaFramework\bin\test;C:\workspace\JavaFramework\src;C:\workspace\JavaFramework\src\data;C:\workspace\JavaFramework\bin\data\reportes;C:\workspace\JavaFramework\src\data\reportes\screenshots;C:\workspace\JavaFramework\bin\functions;C:\workspace\JavaFramework\src\librerias;C:\workspace\JavaFramework\src\librerias\allure-2.7.0;C:\workspace\JavaFramework\src\librerias\allure-2.7.0\lib;C:\workspace\JavaFramework\src\librerias\apache-maven-3.5.4;C:\workspace\JavaFramework\src\librerias\apache-maven-3.5.4\lib;C:\workspace\JavaFramework\src\librerias\commons-io-2.6;C:\workspace\JavaFramework\src\librerias\drivers;C:\workspace\JavaFramework\src\librerias\poi-bin-3.17-20170915;C:\workspace\JavaFramework\src\librerias\poi-bin-3.17-20170915\lib;C:\workspace\JavaFramework\src\pages;C:\workspace\JavaFramework\src\test;C:\workspace\JavaFramework\src\librerias\*;C:\workspace\JavaFramework\src\test\*;C:\workspace\JavaFramework\src\test\java\*;C:\workspace\JavaFramework\target;C:\workspace\JavaFramework\target\surefire;C:\workspace\JavaFramework\target\surefire-reports"
+set classpath="%project_test_path%;%Path%"
 
-
-java org.testng.TestNG C:\workspace\JavaFramework\testng.xml 
+java org.testng.TestNG C:\workspace\JavaFramework\testng.xml
 
 pause
+

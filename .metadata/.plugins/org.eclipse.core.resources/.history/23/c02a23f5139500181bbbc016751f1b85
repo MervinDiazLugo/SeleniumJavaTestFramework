@@ -1,0 +1,13 @@
+package test.java.pages;
+
+public class Bicentenario {
+	
+	public String lbl_MenuTopNosotros_xpath = "//*[@id='botonesTop']/div[1]";
+	//Nosotros
+	
+	public String txt_Nombre_xpath = "//*[@id='firstName']";
+
+	
+	
+	
+}

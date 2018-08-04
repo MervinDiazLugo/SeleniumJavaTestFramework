@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Implementation-Title: Maven Model Builder
+Implementation-Version: 3.5.4
+Built-By: stephenc
+Specification-Vendor: The Apache Software Foundation
+Specification-Title: Maven Model Builder
+Implementation-Vendor-Id: org.apache.maven
+Created-By: Apache Maven 3.5.3
+Build-Jdk: 1.8.0_152
+Specification-Version: 3.5
+Implementation-URL: https://maven.apache.org/ref/3.5.4/maven-model-bui
+ lder/
+Implementation-Vendor: The Apache Software Foundation
+
